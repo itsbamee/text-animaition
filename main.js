@@ -13,8 +13,8 @@ function splitText(el, tagName = 'span') {
 	const text = el.innerText;
 	el.innerHTML = '';
 	let tags = '';
-	for (let letter of text) tags += `<${tagName}>${letter}</${tagName}>`;
+	for (let letter of text) tags += `<${tagName} style='display:inline-block'>${letter}</${tagName}>`;
 	el.innerHTML = tags;
 }
 
-splitText(h1, 'strong');
+splitText(h1);
