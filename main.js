@@ -1,14 +1,20 @@
-/* const alphabet = document.createElement('h1');
-h1.innerText = 'alphabet';
-console.log(alphabet);*/
-
 const h1 = document.querySelector('h1');
+/*
 const text = h1.innerText;
-h1.innerText = ''; //h1을 가져와서 옮겨담고, 어펜드 해주면 뒤에 붙으니까 기존 h1을 없애주어야 함
-// console.log(h1);
+h1.innerText = '';
+let tags = '';
+for (let letter of text) tags += `<span>${letter}</span>`;
+h1.innerHTML = tags;
+*/
 
-for (let letter of text) {
-	const span = document.createElement('span');
-	span.innerText = letter;
-	h1.append(span);
+//h1 요소는 자동적으로 분리해서 span으로 감싸도록 자동처리하는 방법
+//el -> 선택자가 들어가는 요소는 함수명을 el, elem 등으로 써주는게 좋음
+function splitText(el, tagName = 'span') {
+	const text = el.innerText;
+	el.innerHTML = '';
+	let tags = '';
+	for (let letter of text) tags += `<${tagName}>${letter}</${tagName}>`;
+	el.innerHTML = tags;
 }
+
+splitText(h1, 'strong');
